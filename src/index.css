@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-darkest text-brand-textMain font-sans antialiased selection:bg-brand-orange selection:text-white;
+  }
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(18, 22, 32, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(41, 53, 72, 0.5);
+}
+
+/* Custom Scrollbar for modern web experience */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090B0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #293548;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #DE4F26;
+}
+
+/* Hide print layout elements during normal viewing */
+.print-only {
+  display: none;
+}
+
+/* Print CSS Overrides */
+@media print {
+  @page {
+    margin: 0 !important; /* Hides browser default headers (Revive Fitness) and footers (localhost) */
+  }
+
+  /* Reset layout wrapper heights and spacing to avoid empty pages */
+  html, #root, div.min-h-screen, main {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    margin: 1.2cm !important; /* Safe margin offset from physical page borders */
+    padding: 0 !important;
+  }
+
+  /* Hide normal UI like headers, buttons, footers */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Display print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Force elements to be printed as black-and-white grids */
+  .print-card {
+    background: #ffffff !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+  }
+
+  .print-table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  .print-table th,
+  .print-table td {
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    padding: 4px 6px !important;
+    background: transparent !important;
+  }
+
+  .print-border-bottom {
+    border-bottom: 1px dotted #000000 !important;
+  }
+
+  /* Avoid page break mid-card */
+  .print-avoid-break {
+    page-break-inside: avoid !important;
+  }
+}
