@@ -4,7 +4,7 @@ import Dashboard from './components/Dashboard';
 import JobCardForm from './components/JobCardForm';
 import JobCardView from './components/JobCardView';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function App() {
   const [token, setToken] = useState(() => {

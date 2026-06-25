@@ -158,7 +158,7 @@ export default function JobCardView({ jobId, onSelectView, apiBaseUrl, token }) 
     <div className="min-h-screen bg-brand-darkest text-white pb-20">
       
       {/* Navigation & Actions Header Bar */}
-      <header className="no-print sticky top-0 z-40 bg-brand-card/90 backdrop-blur-md border-b border-brand-border py-4 px-6 flex items-center justify-between">
+      <header className="no-print sticky top-0 z-40 bg-brand-card/90 backdrop-blur-md border-b border-brand-border py-4 px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <button
             onClick={() => onSelectView('dashboard')}
@@ -171,27 +171,30 @@ export default function JobCardView({ jobId, onSelectView, apiBaseUrl, token }) 
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <button
             onClick={handleWhatsAppShare}
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded bg-emerald-600 hover:bg-emerald-700 text-white transition duration-200 shadow-md shadow-emerald-600/10"
+            className="flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 text-xs font-semibold rounded bg-emerald-600 hover:bg-emerald-700 text-white transition duration-200 shadow-md shadow-emerald-600/10 flex-1 sm:flex-none"
+            title="Share WhatsApp"
           >
             <MessageSquare size={15} />
-            <span>Share WhatsApp</span>
+            <span className="hidden sm:inline">Share WhatsApp</span>
           </button>
           <button
             onClick={handlePrint}
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded bg-brand-input border border-brand-border hover:border-brand-orange text-brand-textMain hover:text-white transition duration-200"
+            className="flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 text-xs font-semibold rounded bg-brand-input border border-brand-border hover:border-brand-orange text-brand-textMain hover:text-white transition duration-200 flex-1 sm:flex-none"
+            title="Print Card"
           >
             <Printer size={15} />
-            <span>Print Card</span>
+            <span className="hidden sm:inline">Print Card</span>
           </button>
           <button
             onClick={() => onSelectView('edit', jc.id)}
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded bg-brand-input border border-brand-border hover:border-blue-500 text-brand-textMain hover:text-white transition duration-200"
+            className="flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 text-xs font-semibold rounded bg-brand-input border border-brand-border hover:border-blue-500 text-brand-textMain hover:text-white transition duration-200 flex-1 sm:flex-none"
+            title="Edit"
           >
             <Edit size={15} />
-            <span>Edit</span>
+            <span className="hidden sm:inline">Edit</span>
           </button>
         </div>
       </header>
@@ -204,11 +207,11 @@ export default function JobCardView({ jobId, onSelectView, apiBaseUrl, token }) 
           
           {/* Brand Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-brand-border pb-6">
-            <div className="flex items-center gap-4">
-              <img src="/logo.jpg" alt="Rangeway Logo" className="h-12 w-auto object-contain rounded" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <img src="/logo.jpg" alt="Rangeway Logo" className="h-10 sm:h-12 w-auto object-contain rounded shrink-0" />
               <div>
-                <h1 className="text-xl sm:text-2xl font-bold font-outfit uppercase tracking-wider text-white">Rangeway Auto Upgrades</h1>
-                <p className="text-xs text-brand-orange uppercase tracking-widest font-bold">Job Card Invoice</p>
+                <h1 className="text-lg sm:text-2xl font-bold font-outfit uppercase tracking-wider text-white leading-tight">Rangeway Auto Upgrades</h1>
+                <p className="text-[10px] sm:text-xs text-brand-orange uppercase tracking-widest font-bold mt-0.5">Job Card Invoice</p>
               </div>
             </div>
             <div className="text-left md:text-right text-xs text-brand-textMuted space-y-1">
@@ -385,10 +388,10 @@ export default function JobCardView({ jobId, onSelectView, apiBaseUrl, token }) 
           {/* Logo Header */}
           <div className="flex justify-between items-center border-b-2 border-black pb-4 mb-4">
             <div className="flex items-center gap-3">
-              <img src="/logo.jpg" alt="Rangeway Logo" className="h-10 w-auto object-contain rounded" />
+              <img src="/logo.jpg" alt="Rangeway Logo" className="h-10 w-auto object-contain rounded shrink-0" />
               <div>
-                <h1 className="text-xl font-bold font-outfit uppercase tracking-wider text-black">Rangeway Auto Upgrades</h1>
-                <p className="text-xs font-bold uppercase tracking-widest text-black">Job Card</p>
+                <h1 className="text-base sm:text-xl font-bold font-outfit uppercase tracking-wider text-black leading-tight">Rangeway Auto Upgrades</h1>
+                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-black">Job Card</p>
               </div>
             </div>
             <div className="text-right text-[10px] text-black">

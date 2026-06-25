@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, Eye, Edit2, Trash2, LogOut, FileText, ClipboardList, TrendingUp, IndianRupee, Sheet, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Plus, Search, Eye, Edit2, Trash2, LogOut, FileText, ClipboardList, TrendingUp, IndianRupee, Sheet, CheckCircle, AlertCircle, Loader2, Calendar } from 'lucide-react';
 
 export default function Dashboard({ onLogout, onSelectView, apiBaseUrl, token, user }) {
   const [jobCards, setJobCards] = useState([]);
@@ -134,9 +134,9 @@ export default function Dashboard({ onLogout, onSelectView, apiBaseUrl, token, u
   return (
     <div className="min-h-screen bg-brand-darkest text-white pb-12">
       {/* Header Bar */}
-      <header className="sticky top-0 z-40 bg-brand-card/90 backdrop-blur-md border-b border-brand-border py-4 px-6 flex items-center justify-between">
+      <header className="no-print sticky top-0 z-40 bg-brand-card/90 backdrop-blur-md border-b border-brand-border py-4 px-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src="/logo.jpg" alt="Rangeway" className="h-9 w-auto object-contain rounded" />
+          <img src="/logo.jpg" alt="Rangeway" className="h-9 sm:h-10 w-auto object-contain rounded shrink-0" />
           <div className="hidden sm:block">
             <h2 className="text-lg font-bold font-outfit uppercase tracking-wider text-white">Rangeway Auto Upgrades</h2>
             <p className="text-[10px] text-brand-textMuted -mt-1 uppercase tracking-widest font-semibold">Service Management</p>
@@ -232,7 +232,7 @@ export default function Dashboard({ onLogout, onSelectView, apiBaseUrl, token, u
               id="export-month-btn"
               onClick={() => handleExportToSheets('current_month')}
               disabled={exportStatus === 'loading'}
-              className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold transition duration-200 border ${
+              className={`flex items-center justify-center gap-2 px-3 py-3 sm:px-4 rounded-lg font-semibold transition duration-200 border ${
                 exportStatus === 'success' && exportType === 'current_month'
                   ? 'bg-emerald-600/20 border-emerald-500 text-emerald-400'
                   : exportStatus === 'error' && exportType === 'current_month'
@@ -247,16 +247,21 @@ export default function Dashboard({ onLogout, onSelectView, apiBaseUrl, token, u
               ) : exportStatus === 'error' && exportType === 'current_month' ? (
                 <AlertCircle size={18} />
               ) : (
-                <Sheet size={18} />
+                <Calendar size={18} className="text-brand-orange" />
               )}
-              <span className="hidden sm:inline">
-                {exportStatus === 'loading' && exportType === 'current_month'
-                  ? 'Exporting Month...'
-                  : exportStatus === 'success' && exportType === 'current_month'
-                  ? 'Month Exported!'
-                  : exportStatus === 'error' && exportType === 'current_month'
-                  ? 'Export Failed'
-                  : 'Export This Month'}
+              <span className="text-xs sm:text-sm">
+                {exportStatus === 'loading' && exportType === 'current_month' ? (
+                  <span>Exporting...</span>
+                ) : exportStatus === 'success' && exportType === 'current_month' ? (
+                  <span>Exported!</span>
+                ) : exportStatus === 'error' && exportType === 'current_month' ? (
+                  <span>Failed</span>
+                ) : (
+                  <>
+                    <span className="inline sm:hidden">Month</span>
+                    <span className="hidden sm:inline">Export This Month</span>
+                  </>
+                )}
               </span>
             </button>
 
@@ -265,7 +270,7 @@ export default function Dashboard({ onLogout, onSelectView, apiBaseUrl, token, u
               id="export-all-btn"
               onClick={() => handleExportToSheets('all')}
               disabled={exportStatus === 'loading'}
-              className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold transition duration-200 border ${
+              className={`flex items-center justify-center gap-2 px-3 py-3 sm:px-4 rounded-lg font-semibold transition duration-200 border ${
                 exportStatus === 'success' && exportType === 'all'
                   ? 'bg-emerald-600/20 border-emerald-500 text-emerald-400'
                   : exportStatus === 'error' && exportType === 'all'
@@ -280,16 +285,21 @@ export default function Dashboard({ onLogout, onSelectView, apiBaseUrl, token, u
               ) : exportStatus === 'error' && exportType === 'all' ? (
                 <AlertCircle size={18} />
               ) : (
-                <Sheet size={18} />
+                <Sheet size={18} className="text-emerald-400" />
               )}
-              <span className="hidden sm:inline">
-                {exportStatus === 'loading' && exportType === 'all'
-                  ? 'Exporting All...'
-                  : exportStatus === 'success' && exportType === 'all'
-                  ? 'All Exported!'
-                  : exportStatus === 'error' && exportType === 'all'
-                  ? 'Export Failed'
-                  : 'Export All Data'}
+              <span className="text-xs sm:text-sm">
+                {exportStatus === 'loading' && exportType === 'all' ? (
+                  <span>Exporting...</span>
+                ) : exportStatus === 'success' && exportType === 'all' ? (
+                  <span>Exported!</span>
+                ) : exportStatus === 'error' && exportType === 'all' ? (
+                  <span>Failed</span>
+                ) : (
+                  <>
+                    <span className="inline sm:hidden">All</span>
+                    <span className="hidden sm:inline">Export All Data</span>
+                  </>
+                )}
               </span>
             </button>
 
